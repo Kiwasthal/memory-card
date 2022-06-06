@@ -12,15 +12,17 @@ const Wrapper = styled.div`
 `;
 
 const GameController = () => {
-  const [roundLength, setRoundLength] = useState(4);
+  const [startingValue, setRoundLength] = useState(14);
+  const [stretch, setStretch] = useState(4);
   const [count, setCount] = useState(0);
 
-  const [isLoading, pokemons] = usePokemonData(3, 2);
+  const [isLoading, pokemons] = usePokemonData(startingValue, stretch);
+  console.log(pokemons);
 
   return (
     <Wrapper>
       <Header />
-      <Displayer items={pokemons} status={isLoading} />
+      <Displayer pokemons={pokemons} status={isLoading} />
     </Wrapper>
   );
 };

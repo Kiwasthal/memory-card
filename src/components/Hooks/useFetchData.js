@@ -1,20 +1,24 @@
 import { useState, useEffect } from 'react';
 
-const usePokemonData = (limit, offset) => {
+const usePokemon = (startingValue, stretch) => {
   const [isLoading, setIsLoading] = useState(false);
   const [fetchedData, setFetchedData] = useState(null);
   useEffect(() => {
     setIsLoading(true);
     const fetchData = async () => {
-      const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${offset}`;
-      const res = await fetch(url);
-      const pokemon = await res.json();
-      setFetchedData(pokemon.results);
+      let pokemonArray = [];
+      for (let i = startingValue; i <= startingValue + stretch; i++) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
+        const res = await fetch(url);
+        const pokemon = await res.json();
+        pokemonArray.push(pokemon);
+      }
+      setFetchedData(pokemonArray);
       setIsLoading(false);
     };
     fetchData();
-  }, [limit, offset]);
+  }, [startingValue, stretch]);
   return [isLoading, fetchedData];
 };
 
-export default usePokemonData;
+export default usePokemon;
