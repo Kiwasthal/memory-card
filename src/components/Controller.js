@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from './Header';
 import Displayer from './Displayer';
-import getPokemon from './Hooks/useFetchData';
+import usePokemonData from './Hooks/useFetchData';
 
 const Wrapper = styled.div`
   display: grid;
@@ -13,14 +13,14 @@ const Wrapper = styled.div`
 
 const GameController = () => {
   const [roundLength, setRoundLength] = useState(4);
-  const [pokemons, setPokemons] = useState(getPokemon(roundLength, 0));
-
   const [count, setCount] = useState(0);
+
+  const [isLoading, pokemons] = usePokemonData(3, 2);
 
   return (
     <Wrapper>
       <Header />
-      <Displayer items={pokemons} />
+      <Displayer items={pokemons} status={isLoading} />
     </Wrapper>
   );
 };

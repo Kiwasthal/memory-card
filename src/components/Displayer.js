@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { useEffect } from 'react';
 import Card from './Card';
 
 const StyledDisplayer = styled.div`
@@ -9,8 +10,8 @@ const StyledDisplayer = styled.div`
 `;
 
 const Displayer = ({ items }) => {
-  const displayItems = items.map(item => <Card />);
-  return <StyledDisplayer>{displayItems}</StyledDisplayer>;
+  const displayMons = items.map(item => <Card item={item} />);
+  return <StyledDisplayer>{displayMons}</StyledDisplayer>;
 };
 
 export default Displayer;
