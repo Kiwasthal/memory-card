@@ -4,7 +4,7 @@ import Card from './Card';
 
 const StyledDisplayer = styled.div`
   background-color: #ffc74d;
-  display: grid;
+
   grid-auto-columns: 15%;
   max-width: 80%;
   justify-content: center;
@@ -13,13 +13,19 @@ const StyledDisplayer = styled.div`
 const Displayer = ({ pokemons, status }) => {
   let content = <div>loading</div>;
 
-  let mons;
-  if (!pokemons) mons = [];
+  const loadedPokemons = pokemons
+    ? pokemons.map(pokemon => ({
+        name: pokemon.name,
+        url: pokemon.sprites.front_default,
+      }))
+    : [];
 
-  if (!status) {
+  if (!status && loadedPokemons && loadedPokemons.length > 0) {
     content = (
       <StyledDisplayer>
-        <Card item={mons} />
+        {loadedPokemons.map(pokemon => (
+          <Card name={pokemon.name} url={pokemon.url} />
+        ))}
       </StyledDisplayer>
     );
   }

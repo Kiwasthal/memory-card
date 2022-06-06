@@ -27,17 +27,15 @@ const StyledText = styled.h1`
   font-size: 18px;
 `;
 
-const Card = ({ item }) => {
-  if (item === []) return;
-  console.log();
-  // return (
-  //   // <StyledCard>
-  //   //   <StyledImageHolder
-  //   //     style={{ backgroundImage: `url(${item.sprites.front_default})` }}
-  //   //   />
-  //   //   <StyledText>{item.name}</StyledText>
-  //   // </StyledCard>
-  // );
+const Card = ({ name, url }) => {
+  let content = (
+    <StyledCard>
+      <StyledImageHolder style={{ backgroundImage: `url(${url})` }} />
+      <StyledText>{name}</StyledText>
+    </StyledCard>
+  );
+
+  return content;
 };
 
 export default Card;
