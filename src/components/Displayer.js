@@ -5,9 +5,7 @@ import Card from './Card';
 const StyledDisplayer = styled.div`
   display: grid;
   justify-content: center;
-  grid-auto-flow: column;
-  grid-auto-columns: 250px;
-  flex-wrap: nowrap;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 `;
 
 const Displayer = ({ pokemons, status, increment, reset, nextRound }) => {
@@ -34,9 +32,7 @@ const Displayer = ({ pokemons, status, increment, reset, nextRound }) => {
   const handleRound = name => {
     increment();
     checkClicked(name);
-    if (everythingIsClicked(fetchedPokemons)) {
-      nextRound();
-    }
+    if (everythingIsClicked(fetchedPokemons)) nextRound();
   };
 
   useEffect(() => {
@@ -75,7 +71,7 @@ let shuffleCards = array => {
   let currentIndex = array.length,
     randomIndex;
 
-  while (currentIndex != 0) {
+  while (currentIndex !== 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
