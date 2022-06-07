@@ -27,15 +27,8 @@ const StyledText = styled.h1`
   font-size: 18px;
 `;
 
-const Card = ({ name, url, increment, clicked, checkCl, reset }) => {
-  const clickHandler = () => {
-    if (clicked) reset();
-    else {
-      increment();
-      checkCl(name);
-    }
-  };
-
+const Card = ({ name, url, handleRound, clicked, reset }) => {
+  const clickHandler = () => (clicked ? reset() : handleRound(name));
   let content = (
     <StyledCard onClick={clickHandler}>
       <StyledImageHolder style={{ backgroundImage: `url(${url})` }} />

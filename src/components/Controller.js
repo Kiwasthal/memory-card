@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import Header from './Header';
 import Displayer from './Displayer';
@@ -13,19 +13,26 @@ const Wrapper = styled.div`
 
 const GameController = () => {
   const [stretch, setStretch] = useState(4);
-  const randomValue = () => Math.floor(Math.random() * 900 - stretch);
+  const randomValue = () => Math.floor(Math.random() * 800 - stretch);
   const [roundLength, setRoundLength] = useState(randomValue());
   const [score, setScore] = useState(0);
 
   let [isLoading, pokemons] = usePokemonData(roundLength, stretch);
 
   const incrementScore = () => setScore(score + 1);
+  const incrementStretch = () => setStretch(stretch + 1);
 
+  const resetStretch = () => setStretch(4);
   const resetScore = () => setScore(0);
   const resetRound = () => setRoundLength(randomValue());
+  const nextRound = () => {
+    resetRound();
+    incrementStretch();
+  };
   const resetGame = () => {
     resetScore();
     resetRound();
+    resetStretch();
   };
 
   return (
@@ -36,6 +43,7 @@ const GameController = () => {
         status={isLoading}
         increment={incrementScore}
         reset={resetGame}
+        nextRound={nextRound}
         score={score}
       />
     </Wrapper>

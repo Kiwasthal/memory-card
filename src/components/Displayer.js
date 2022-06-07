@@ -10,7 +10,7 @@ const StyledDisplayer = styled.div`
   flex-wrap: nowrap;
 `;
 
-const Displayer = ({ pokemons, status, increment, reset }) => {
+const Displayer = ({ pokemons, status, increment, reset, nextRound }) => {
   let content = <div>loading</div>;
 
   const [fetchedPokemons, setFetchedPokemons] = useState(pokemons);
@@ -23,6 +23,20 @@ const Displayer = ({ pokemons, status, increment, reset }) => {
         } else return pokemon;
       })
     );
+  };
+
+  let everythingIsClicked = fetchedPokemons =>
+    fetchedPokemons.filter(pokemon => pokemon.clicked).length ===
+    fetchedPokemons.length - 1
+      ? true
+      : false;
+
+  const handleRound = name => {
+    increment();
+    checkClicked(name);
+    if (everythingIsClicked(fetchedPokemons)) {
+      nextRound();
+    }
   };
 
   useEffect(() => {
@@ -46,8 +60,7 @@ const Displayer = ({ pokemons, status, increment, reset }) => {
             name={pokemon.name}
             url={pokemon.url}
             clicked={pokemon.clicked}
-            increment={increment}
-            checkCl={checkClicked}
+            handleRound={handleRound}
             reset={reset}
           />
         ))}
