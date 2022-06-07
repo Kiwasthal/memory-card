@@ -12,17 +12,29 @@ const Wrapper = styled.div`
 `;
 
 const GameController = () => {
-  const [startingValue, setRoundLength] = useState(14);
   const [stretch, setStretch] = useState(4);
-  const [count, setCount] = useState(0);
+  const randomValue = () => Math.floor(Math.random() * 900 - stretch);
+  const [roundLength, setRoundLength] = useState(randomValue());
+  const [score, setScore] = useState(0);
 
-  const [isLoading, pokemons] = usePokemonData(startingValue, stretch);
-  console.log(pokemons);
+  let [isLoading, pokemons] = usePokemonData(roundLength, stretch);
+
+  const incrementScore = () => setScore(score + 1);
+
+  const resetScore = () => setScore(0);
+  const resetRound = () => setRoundLength(randomValue());
 
   return (
     <Wrapper>
-      <Header />
-      <Displayer pokemons={pokemons} status={isLoading} />
+      <Header score={score} />
+      <Displayer
+        pokemons={pokemons}
+        status={isLoading}
+        increment={incrementScore}
+        reset={resetScore}
+        resetGame={resetRound}
+        score={score}
+      />
     </Wrapper>
   );
 };

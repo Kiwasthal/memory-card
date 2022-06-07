@@ -1,24 +1,24 @@
 import styled from 'styled-components';
 
 const StyledCard = styled.div`
-  /* background-color: #ff9671; */
+  background-color: red;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 50%;
   height: 20%;
   border: 1px solid black;
   margin-top: 20px;
+  overflow: hidden;
 `;
 
 const StyledImageHolder = styled.div`
   display: flex;
-  align-items: center;
-  justify-items: center;
   background-repeat: no-repeat;
+  background-position: center;
   width: 150px;
-  background-size: 150px;
+  background-size: contain;
   height: 120px;
 `;
 
@@ -27,9 +27,17 @@ const StyledText = styled.h1`
   font-size: 18px;
 `;
 
-const Card = ({ name, url }) => {
+const Card = ({ name, url, increment, clicked, checkCl, resetGame }) => {
+  const clickHandler = () => {
+    if (clicked) resetGame();
+    else {
+      increment();
+      checkCl(name);
+    }
+  };
+
   let content = (
-    <StyledCard>
+    <StyledCard onClick={clickHandler}>
       <StyledImageHolder style={{ backgroundImage: `url(${url})` }} />
       <StyledText>{name}</StyledText>
     </StyledCard>

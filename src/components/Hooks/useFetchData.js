@@ -7,6 +7,7 @@ const usePokemon = (startingValue, stretch) => {
     setIsLoading(true);
     const fetchData = async () => {
       let pokemonArray = [];
+
       for (let i = startingValue; i <= startingValue + stretch; i++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
         const res = await fetch(url);
