@@ -10,7 +10,7 @@ const StyledDisplayer = styled.div`
   flex-wrap: nowrap;
 `;
 
-const Displayer = ({ pokemons, status, increment, reset, resetGame }) => {
+const Displayer = ({ pokemons, status, increment, reset }) => {
   let content = <div>loading</div>;
 
   const [fetchedPokemons, setFetchedPokemons] = useState(pokemons);
@@ -47,9 +47,8 @@ const Displayer = ({ pokemons, status, increment, reset, resetGame }) => {
             url={pokemon.url}
             clicked={pokemon.clicked}
             increment={increment}
-            reset={reset}
             checkCl={checkClicked}
-            resetGame={resetGame}
+            reset={reset}
           />
         ))}
       </StyledDisplayer>

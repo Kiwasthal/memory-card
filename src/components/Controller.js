@@ -23,6 +23,10 @@ const GameController = () => {
 
   const resetScore = () => setScore(0);
   const resetRound = () => setRoundLength(randomValue());
+  const resetGame = () => {
+    resetScore();
+    resetRound();
+  };
 
   return (
     <Wrapper>
@@ -31,8 +35,7 @@ const GameController = () => {
         pokemons={pokemons}
         status={isLoading}
         increment={incrementScore}
-        reset={resetScore}
-        resetGame={resetRound}
+        reset={resetGame}
         score={score}
       />
     </Wrapper>

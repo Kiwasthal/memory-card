@@ -27,9 +27,9 @@ const StyledText = styled.h1`
   font-size: 18px;
 `;
 
-const Card = ({ name, url, increment, clicked, checkCl, resetGame }) => {
+const Card = ({ name, url, increment, clicked, checkCl, reset }) => {
   const clickHandler = () => {
-    if (clicked) resetGame();
+    if (clicked) reset();
     else {
       increment();
       checkCl(name);
