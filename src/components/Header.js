@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import logo from './assets/logo.svg';
 import { useEffect, useState } from 'react';
 
 const StyledHeader = styled.div`
@@ -20,7 +21,7 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 25px double black;
+  border-bottom: 20px double black;
 `;
 
 const StyledGameName = styled.div`
@@ -28,7 +29,11 @@ const StyledGameName = styled.div`
 `;
 
 const StyledLogoContainer = styled.div`
-  border: 1px solid black;
+  height: 100%;
+  width: 200px;
+  background-position: center;
+  background-size: cover;
+  background-image: url(${logo});
 `;
 
 const StyledCounterContainer = styled.div``;
@@ -47,7 +52,7 @@ const Header = ({ score }) => {
   return (
     <StyledHeader>
       <StyledGameName>Memory-card</StyledGameName>
-      <StyledLogoContainer>Pokemon</StyledLogoContainer>
+      <StyledLogoContainer />
       <StyledCounterContainer>
         <StyleCounter>{'Highest Score: ' + highestScore}</StyleCounter>
         <StyleCounter>{'Score: ' + score}</StyleCounter>
