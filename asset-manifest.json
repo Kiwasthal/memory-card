@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/memory-card/static/css/main.c7d6dbc7.css",
-    "main.js": "/memory-card/static/js/main.63194b15.js",
+    "main.js": "/memory-card/static/js/main.84fdc299.js",
     "static/media/bgimg.jpg": "/memory-card/static/media/bgimg.c5462d020935b99903b0.jpg",
     "static/media/pokeball.png": "/memory-card/static/media/pokeball.8069f3cd51921de564b7.png",
     "static/media/logo.svg": "/memory-card/static/media/logo.35e1eebf790f824c870708d2ed9f90a2.svg",
     "index.html": "/memory-card/index.html",
     "main.c7d6dbc7.css.map": "/memory-card/static/css/main.c7d6dbc7.css.map",
-    "main.63194b15.js.map": "/memory-card/static/js/main.63194b15.js.map"
+    "main.84fdc299.js.map": "/memory-card/static/js/main.84fdc299.js.map"
   },
   "entrypoints": [
     "static/css/main.c7d6dbc7.css",
-    "static/js/main.63194b15.js"
+    "static/js/main.84fdc299.js"
   ]
 }
