@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Card from './Card';
+import findBackground from './findBackground';
 
 const StyledDisplayer = styled.div`
   display: grid;
@@ -39,6 +40,8 @@ const Displayer = ({ pokemons, status, increment, reset, nextRound }) => {
     setFetchedPokemons(
       pokemons
         ? pokemons.map(pokemon => ({
+            background: findBackground(pokemon, 0),
+            shadow: findBackground(pokemon, 1),
             name: pokemon.name,
             url: pokemon.sprites.front_default,
             clicked: false,
@@ -55,6 +58,8 @@ const Displayer = ({ pokemons, status, increment, reset, nextRound }) => {
             key={pokemon.name}
             name={pokemon.name}
             url={pokemon.url}
+            background={pokemon.background}
+            shadow={pokemon.shadow}
             clicked={pokemon.clicked}
             handleRound={handleRound}
             reset={reset}

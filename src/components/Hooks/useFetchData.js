@@ -13,6 +13,7 @@ const usePokemon = (startingValue, stretch) => {
         const res = await fetch(url);
         const pokemon = await res.json();
         pokemonArray.push(pokemon);
+        console.log(pokemon);
       }
       setFetchedData(pokemonArray);
       setIsLoading(false);

@@ -12,12 +12,13 @@ const Wrapper = styled.div`
 `;
 
 const GameController = () => {
-  const [stretch, setStretch] = useState(4);
   const randomValue = () => Math.floor(Math.random() * 800 - stretch);
+
+  const [stretch, setStretch] = useState(4);
   const [roundLength, setRoundLength] = useState(randomValue());
   const [score, setScore] = useState(0);
 
-  let [isLoading, pokemons] = usePokemonData(roundLength, stretch);
+  const [isLoading, pokemons] = usePokemonData(roundLength, stretch);
 
   const incrementScore = () => setScore(score + 1);
   const incrementStretch = () => setStretch(stretch + 1);

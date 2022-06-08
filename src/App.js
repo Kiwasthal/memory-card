@@ -1,5 +1,5 @@
 import GameController from './components/Controller';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 const theme = {
   main: 'red',
