@@ -8,9 +8,9 @@ This project is made as part of the Odin Project React Series . The user wins by
 
 <a href="https://www.theodinproject.com/lessons/node-path-javascript-memory-card">Relevant Lesson</a>
 
---><a href="https://kiwasthal.github.io/memory-card/">Project Demo! </a>
+--><a href="https://kiwasthal.github.io/memory-card/">Project Demo! </a> <--
 
-<img src='./components/assets/preview.png' alt='game-preview'>
+<img src='./src/components/assets/preview.png' alt='game-preview'>
 
 # Notes
 
