@@ -15,11 +15,12 @@ const StyledCard = styled.div`
   transition: all 200ms ease-in;
   border-radius: 5px;
   transform: scale(1);
-  box-shadow: 3px 5px 5px black;
+  box-shadow: 0px 0px 0px black;
   position: relative;
   &:hover {
     transform: scale(1.1);
     border-radius: 12px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.5);
   }
 `;
 
@@ -28,7 +29,7 @@ const StyledImageHolder = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   filter: drop-shadow(5px 2px 0px black);
-
+  margin-top: 20px;
   width: 150px;
   background-size: contain;
   height: 70%;
@@ -59,16 +60,16 @@ const Card = ({
   const start = [];
 
   const fillStart = () => {
-    for (let i = 0; i <= 20; i++) {
+    for (let i = 0; i <= 1; i++) {
       if (shadow)
         start.push(
           <FontAwesomeIcon
             icon={faStar}
             style={{
               position: 'absolute',
-              right: `${randomPosition()}%`,
-              top: `${randomPosition()}%`,
+              right: `${randomPosition()} + 150px`,
               color: `${shadow}`,
+              height: '200px',
             }}
           />
         );
@@ -78,9 +79,9 @@ const Card = ({
             icon={faStar}
             style={{
               position: 'absolute',
-              right: `${randomPosition()}%`,
-              top: `${randomPosition()}%`,
+              right: `${randomPosition()} + 150px`,
               color: `rgba(0, 9, 0, 0.1)`,
+              height: '200px',
             }}
           />
         );
@@ -94,7 +95,8 @@ const Card = ({
       onClick={clickHandler}
       style={{
         backgroundColor: background,
-        boxShadow: `3px 3px 5px ${shadow}`,
+        border: `10px solid ${shadow}`,
+        outline: `5px solid #fff`,
       }}
     >
       {start.map(start => start)}

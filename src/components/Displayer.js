@@ -2,15 +2,37 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import Card from './Card';
 import findBackground from './findBackground';
+import pokeball from './assets/pokeball.png';
+import { keyframes } from 'styled-components';
+import bgimg from './assets/bgimg.jpg';
 
 const StyledDisplayer = styled.div`
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  background: url(${bgimg});
+  background-size: cover;
+  background-repeat: no-repeat;
+`;
+
+const Rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+`;
+
+const StyledImage = styled.img`
+  align-self: center;
+  justify-self: center;
+  height: 30%;
+  animation: ${Rotate} 5s infinite linear;
 `;
 
 const Displayer = ({ pokemons, status, increment, reset, nextRound }) => {
-  let content = <div>loading</div>;
+  let content = <StyledImage src={pokeball} alt="pokeball-loading" />;
 
   const [fetchedPokemons, setFetchedPokemons] = useState(pokemons);
 
