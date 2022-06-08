@@ -22,10 +22,10 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   border-bottom: 20px double black;
-`;
-
-const StyledGameName = styled.div`
-  border: 1px solid black;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: white;
+  text-shadow: 1px 3px black;
 `;
 
 const StyledLogoContainer = styled.div`
@@ -36,10 +36,10 @@ const StyledLogoContainer = styled.div`
   background-image: url(${logo});
 `;
 
-const StyledCounterContainer = styled.div``;
-
 const StyleCounter = styled.div`
-  border: 1px solid black;
+  font-size: 24px;
+  border-bottom: 4px solid black;
+  filter: drop-shadow(1px 1px 1px black);
 `;
 
 const Header = ({ score }) => {
@@ -51,12 +51,13 @@ const Header = ({ score }) => {
 
   return (
     <StyledHeader>
-      <StyledGameName>Memory-card</StyledGameName>
+      <StyleCounter style={{ marginLeft: '50px' }}>
+        {'Highest Score: ' + highestScore}
+      </StyleCounter>
       <StyledLogoContainer />
-      <StyledCounterContainer>
-        <StyleCounter>{'Highest Score: ' + highestScore}</StyleCounter>
-        <StyleCounter>{'Score: ' + score}</StyleCounter>
-      </StyledCounterContainer>
+      <StyleCounter style={{ marginRight: '150px' }}>
+        {'Score: ' + score}
+      </StyleCounter>
     </StyledHeader>
   );
 };
